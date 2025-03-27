@@ -11,6 +11,8 @@ function renderTasks(){
 
         let checkbox = document.createElement("input")
         checkbox.type = "checkbox"
+
+        // checking the task complete status and assigning to checkbox
         checkbox.checked = value.completed
 
         checkbox.onchange = ()=>{
