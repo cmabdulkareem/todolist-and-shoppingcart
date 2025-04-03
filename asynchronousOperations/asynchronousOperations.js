@@ -6,9 +6,9 @@ In synchronous JavaScript, tasks are executed one after the other, in the order 
 This means that each operation must complete before the next one starts.
 */
 
-// console.log("Task 1");
-// console.log("Task 2");
-// console.log("Task 3");
+/* console.log("Task 1");
+console.log("Task 2");
+console.log("Task 3"); */
 
 
 
@@ -19,13 +19,13 @@ like fetching data from a server, reading files, or waiting for a user interacti
 the program doesn't wait for one task to finish before moving on to the next task.
 */
 
-// console.log("Task 1");
+/* console.log("Task 1");
 
-// setTimeout(() => {
-//   console.log("Task 2 (after 2 seconds)");
-// }, 2000);
+setTimeout(() => {
+  console.log("Task 2 (after 2 seconds)");
+}, 2000);
 
-// console.log("Task 3");
+console.log("Task 3"); */
 
 
 
