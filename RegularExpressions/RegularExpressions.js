@@ -2,7 +2,7 @@
 // that matches the pattern. In other words, a regex accepts a certain set of strings and rejects the rest.
 
 
-
+Eg : 1
 /*
 let regexObj = /world/
 // checks if the word 'world' is included
@@ -14,30 +14,75 @@ console.log(regexObj.test(str));
 
 
 
-/* let regexObj = /world/i
-// i is a flag that stands for case-insensitive matching. When this flag is used, 
-// the pattern will match letters regardless of whether they are uppercase or lowercase.
+// Flag : i : checking string even for case-insensitive matching
 
-let str = "Hello World"
+Eg : 2
+/*
+let regexObj = /world/i
 
-console.log(regexObj.test(str));  */
+let str = "Hello world"
+
+console.log(regexObj.test(str)); 
+*/
 
 
+Character_Class1: '[]'
+// Match any one character from this set.
+// /[aeiou]/  : A character class that matches any one vowel.
+// We can specify range range using '-', eg: /[a-z] world/
 
-/* let regexObj = /[abc] world/i; 
-// The pattern matches any string where 'a', 'b', or 'c' appears as a single character 
-// followed by ' world' (case-insensitive due to the 'i' flag).
+/* let regexObj = /[a-z] world/i; 
 
-let str = "Hello c World";
+let str = "Hello z World";
+
+console.log(regexObj.test(str)); */
+
+
+Input_boundary_beginning_assertion__Start_of_string_anchor: '^'
+// checks if the string starts with provided word
+
+/* let regexObj = /^Hello world/i; 
+
+let str = "Hello World";
 
 console.log(regexObj.test(str)); */
 
 
 
-/* let regexObj = /[a-z] world/i; 
-// The pattern matches any string where a single letter (a to z) appears 
-// immediately before " world" (case-insensitive due to the 'i' flag).
-// The '-' inside [a-z] specifies a **range**, meaning it includes all letters from 'a' to 'z'.
+Input_boundary_beginning_assertion__End_of_string_anchor: '$'
+// checks if the string ends with provided word
+
+/* let regexObj = /Hello world$/i; 
+
+let str = "Hello World";
+
+console.log(regexObj.test(str)); */
+
+
+Quantifier__Zero_or_One : '?'
+// Matches 0 or 1 occurrences of the previous character or group.
+
+Eg: 1
+/* let regexObj = /colou?r/i; 
+
+let str = "following color";
+
+console.log(regexObj.test(str)); */
+
+
+Eg: 2
+/* let regexObj = /catalog(ue)?/i; 
+
+let str = "any cotalog";
+
+console.log(regexObj.test(str)); */
+
+
+
+Negated_Character_Class: '[^]'
+// /[^abc]/  : A character class that doesn't match any one character from abc.
+
+/* let regexObj = /[^abc] world/i; 
 
 let str = "Hello z World";
 
@@ -45,130 +90,90 @@ console.log(regexObj.test(str)); */
 
 
 
-/* let regexObj = /[a-zA-Z0-9] world/i; 
-// The pattern matches any string where a single letter (a to z) appears 
-// immediately before " world" (case-insensitive due to the 'i' flag).
-// The '-' inside [a-z] specifies a **range**, meaning it includes all letters from 'a' to 'z'.
+Wirldcard_Character_Class: '.'
+// /^hello.world$/ : The . in the regex only matches a single character, 
+// meaning: It expects exactly one character between "hello" and "world".
 
-let str = "Hello 8 World";
+/* let regexObj = /^hello.world$/i; 
+
+let str = "Hello world";
+
+console.log(regexObj.test(str)); */
+
+
+Digit_character_class_escape: '\d'
+// Matches any digit. Equivalent to [0-9]
+
+/* let regexObj = /^hello.\dworld$/i; 
+
+let str = "Hello 1world";
 
 console.log(regexObj.test(str)); */
 
 
 
-/* let regexObj = /^Hello/i; 
-// The pattern matches any string that **starts with** "Hello" (case-insensitive due to the 'i' flag).
-// The '^' (caret) at the beginning ensures that "Hello" must appear at the **start** of the string.
+Non_Digit_character_class_escape: '\D'
+// Denies any digit.
 
-let str = "Hello World";
+/* let regexObj = /^hello.\Dworld$/i; 
 
-console.log(regexObj.test(str)); // Output: true */
-
-
-
-/* let regexObj = /World$/i; 
-// The pattern matches any string that **ends with** "World" (case-insensitive due to the 'i' flag).
-// The '$' (dollar) at the end ensures that "World" must appear at the **end** of the string.
-
-let str = "Hello World";
+let str = "Hello 1world";
 
 console.log(regexObj.test(str)); */
 
 
 
-/* let regexObj = /Worlds?$/i; 
-// The pattern matches any string that **ends with** "World" or "Worlds" (case-insensitive due to the 'i' flag).
-// The '$' (dollar) at the end ensures that "World" or "Worlds" must appear at the **end** of the string.
-// The 's?' means that the 's' is optional, so it matches both "World" and "Worlds".
+quantifier__lazy_one_or_more_quantifier : '+'
+// Matches one or more occurrences of the previous character or group.
+// /a+/ matches the "a" in "candy" and all the "a"'s in "caaaaaaandy"
+// One-or-more quantifier
 
-let str = "Hello World";
+/* let regexObj = /a+/i; 
 
-console.log(regexObj.test(str));  */
-
-
-
-/* let regexObj = /World(es)?$/i; 
-// The pattern matches any string that **ends with** "World" or "Worlds" (case-insensitive due to the 'i' flag).
-// The '$' (dollar) at the end ensures that "World" or "Worlds" must appear at the **end** of the string.
-// The '(es)?' means that the "es" is optional, so it matches both "World" and "Worlds".
-// The '?' makes the "es" optional, allowing the match to occur with or without the "s" at the end.
-
-let str = "Hello World";
+let str = "candy";
 
 console.log(regexObj.test(str)); */
 
 
 
-/* let regexObj = /^Hello.*world$/i; 
-// The pattern matches any string that:
-// - starts with "Hello" (case-insensitive due to the 'i' flag)
-// - ends with "world"
-// - anything (or nothing) can be between "Hello" and "world" (due to '.*')
+quantifier__lazy_zero_or_more_quantifier : '+'
+// Matches zero or more occurrences of the previous character or group.
+// /a*/ matches the "a" in "candy" and all the "a"'s in "caaaaaaandy"
+// One-or-more quantifier
 
-// ^ ensures the string starts with "Hello"
-// .* allows any characters (including spaces or special characters) between "Hello" and "world"
-// $ ensures the string ends with "world"
+// let regexObj = /a*/i; 
 
-let str = "Hello beautiful world";
+// let str = "candy";
 
-console.log(regexObj.test(str)); */
+// console.log(regexObj.test(str));
 
 
 
-/* let regexObj = /Worlds*$/i; 
-// The pattern matches any string that **ends with** "World" followed by zero or more 's' characters 
-// (case-insensitive due to the 'i' flag).
-// The '$' (dollar) at the end ensures that "World" (with or without 's') must appear at the **end** of the string.
-// The 's*' means that there can be zero or more occurrences of the character 's' after "World".
+quantifier__atleast_quantifier : '{min,max}'
+// It means the preceding element must appear at least x times, but with upper limit.
+// upper limit can be ignored
 
-let str = "Hello World";
-
-console.log(regexObj.test(str)); */
-
-
-
-/* let regexObj = /Worlds+$/i; 
-// The pattern matches any string that **ends with** "World" followed by zero or more 's' characters 
-// (case-insensitive due to the 'i' flag).
-// The '$' (dollar) at the end ensures that "World" (with or without 's') must appear at the **end** of the string.
-// The 's+' means that there can be one or more occurrences of the character 's' after "World".
-
-let str = "Hello World";
-
-console.log(regexObj.test(str)); */
+/* const regex = /a{2,}/;
+console.log("aa".match(regex));
+console.log("aaa".match(regex));
+console.log("a".match(regex)); */
 
 
 
-/* let regexObj = /World.$/i; 
-// The pattern matches any string that **ends with** "World" followed by exactly **one character** 
-// (case-insensitive due to the 'i' flag).
-// The '$' (dollar) at the end ensures that "World" must appear at the **end** of the string.
-// The '.' (dot) matches any single character after "World".
-// The 'i' flag makes the match **case-insensitive**.
+Eg: 1
+/* 
+const mobileRegex = /^[789]\d{9}$/;
 
-let str = "Hello World";
+console.log(mobileRegex.test("9876543210")); 
+*/
 
-console.log(regexObj.test(str));  // Output: true (ends with "World" followed by a space) */
+Eg: 2
 
+/*
+const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
 
-
-let regexObj = /^[a-z][a-z0-9_]*$/i; 
-// The pattern matches any string that:
-// 1. Starts with a lowercase letter (a-z) or an uppercase letter (due to the 'i' flag).
-// 2. The rest of the string can contain lowercase letters (a-z), numbers (0-9), or underscores (_).
-// 3. The string must match from the start (^) to the end ($), ensuring the entire string follows the pattern.
-// 4. The 'i' flag makes the match **case-insensitive**, allowing for both lowercase and uppercase letters.
-
-let str = "HelloWorld";
-
-console.log(regexObj.test(str));  // Output: true (valid identifier-like string)
-
-// Additional Example:
-let str2 = "hello_world123";
-console.log(regexObj.test(str2));  // Output: true (valid identifier-like string)
-
-let str3 = "Hello World"; 
-console.log(regexObj.test(str3));  // Output: false (contains a space, which is not allowed)
+console.log(emailRegex.test("admin@gmail.com")); 
+*/
 
 
 
@@ -176,14 +181,3 @@ console.log(regexObj.test(str3));  // Output: false (contains a space, which is 
 
 
 
-
-
-
-
-
-
-
-
-
-
- 
