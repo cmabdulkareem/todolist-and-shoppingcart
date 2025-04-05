@@ -6,9 +6,9 @@ In synchronous JavaScript, tasks are executed one after the other, in the order 
 This means that each operation must complete before the next one starts.
 */
 
-/* console.log("Task 1");
+console.log("Task 1");
 console.log("Task 2");
-console.log("Task 3"); */
+console.log("Task 3");
 
 
 
@@ -19,13 +19,13 @@ like fetching data from a server, reading files, or waiting for a user interacti
 the program doesn't wait for one task to finish before moving on to the next task.
 */
 
-/* console.log("Task 1");
+console.log("Task 1");
 
 setTimeout(() => {
   console.log("Task 2 (after 2 seconds)");
 }, 2000);
 
-console.log("Task 3"); */
+console.log("Task 3");
 
 
 
@@ -39,7 +39,7 @@ Callbacks help manage these non-blocking tasks by running a function after the a
 // A callback is just a function passed as an argument to another function, to be “called back” later.
 
 Eg: 1
-/* function add(a,b){
+function add(a,b){
     return a+b
 }
 
@@ -53,10 +53,10 @@ function calculate(x,y, operation){
 }
 
 console.log(calculate(2,3, add))
-console.log(calculate(2,3, multiply)); */
+console.log(calculate(2,3, multiply));
 
 Eg: 2
-/* function greet(name, callback) {
+function greet(name, callback) {
     console.log("Hello, " + name);
     callback();
 }
@@ -65,10 +65,10 @@ function sayBye() {
     console.log("Goodbye!");
 }
 
-greet("Alice", sayBye); */
+greet("Alice", sayBye);
   
 Eg: 3
-/* function iterateArray(arr, callback) {
+function iterateArray(arr, callback) {
     for (let i = 0; i < arr.length; i++) {
         callback(arr[i]);
     }
@@ -86,11 +86,11 @@ iterateArray([1, 2, 3], console.log); */
     for(let j = 0; j<5; j++){
         console.log(j)
     }
-} */
+}
 
 Eg: 1
 
-/* function add(a, b, callback) {
+function add(a, b, callback) {
     setTimeout(() => {
         const result = a + b;
         console.log("Added:", result);
@@ -121,8 +121,47 @@ add(2, 3, (sum) => {
             console.log("Final Result:", finalResult);
         });
     });
-}); */
+});
 
 
+Eg: 2
 
+function getData(data, getNextData){
+    setTimeout(() => {
+        console.log("Data :", data);
+        if(getNextData){
+            getNextData()
+        }
+    }, 2000);
+}
+
+getData(1, ()=>{
+    getData(2, ()=>{
+        getData(3, ()=>{
+            getData(4)
+        })
+    })
+})
+
+
+// Promise
+
+// A Promise is an object that represents the eventual completion (or failure) of an asynchronous 
+// operation and its resulting value.
+
+// Think of it like this: “I promise I’ll get the data for you. I might take some time, 
+// but I’ll let you know once I’m done — or if something goes wrong.”
+
+function getData(data) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            console.log("Data:", data);
+            resolve();
+        }, 2000);
+    });
+}
+
+getData(1)      // waits 2s, logs "Data: 1"
+    .then(() => getData(2))  // waits 2s, logs "Data: 2"
+    .then(() => getData(3)); // waits 2s, logs "Data: 3"
 
