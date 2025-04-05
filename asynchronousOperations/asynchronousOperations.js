@@ -36,6 +36,8 @@ However, some tasks (like reading a file, making an API request, or setting a ti
 Callbacks help manage these non-blocking tasks by running a function after the asynchronous operation completes.
 */
 
+// A callback is just a function passed as an argument to another function, to be “called back” later.
+
 Eg: 1
 /* function add(a,b){
     return a+b
@@ -73,3 +75,54 @@ Eg: 3
 }
 
 iterateArray([1, 2, 3], console.log); */
+
+// Callback Hell : Callback Hell happens when you have a bunch of nested callbacks—callbacks inside callbacks 
+// inside callbacks—usually in asynchronous code (e.g. when working with setTimeout, APIs, file reading, etc). 
+// It makes code hard to read and maintain.
+
+// Nesting
+
+/* for(let i = 0; i<5; i++){
+    for(let j = 0; j<5; j++){
+        console.log(j)
+    }
+} */
+
+Eg: 1
+
+/* function add(a, b, callback) {
+    setTimeout(() => {
+        const result = a + b;
+        console.log("Added:", result);
+        callback(result);
+    }, 1000);
+}
+
+function multiply(a, b, callback) {
+    setTimeout(() => {
+        const result = a * b;
+        console.log("Multiplied:", result);
+        callback(result);
+    }, 1000);
+}
+
+function subtract(a, b, callback) {
+    setTimeout(() => {
+        const result = a - b;
+        console.log("Subtracted:", result);
+        callback(result);
+    }, 1000);
+}
+
+// Callback hell starts here 😨
+add(2, 3, (sum) => {
+    multiply(sum, 4, (product) => {
+        subtract(product, 5, (finalResult) => {
+            console.log("Final Result:", finalResult);
+        });
+    });
+}); */
+
+
+
+
