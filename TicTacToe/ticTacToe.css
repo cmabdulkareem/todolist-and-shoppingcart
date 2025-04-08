@@ -1,0 +1,26 @@
+
+.row{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.cell{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 10px;
+    width: 75px;
+    height: 75px;
+    border: 2px solid black;
+    border-radius: 20px;
+    line-height: 75px;
+    text-align: center;
+    font-size: 42px;
+    cursor: pointer;
+    transition: .1s ease-in;
+}
+
+.cell:hover{
+    transform: scale(1.1);
+    transition: .1s ease-in;
+}
