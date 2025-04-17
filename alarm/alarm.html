@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Alarm Clock</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    input {
+      font-size: 16px;
+      padding: 5px;
+    }
+    button {
+      font-size: 16px;
+      padding: 5px 10px;
+      margin-top: 15px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Simple Alarm Clock</h1>
+  <p id="current-time">Current Time: </p>
+
+  <input type="time" id="alarm-input">
+  <p id="alarm-set">Alarm Set For: Not Set</p>
+  <p id="alarm-status"></p>
+  <button id="stop-button">Stop Alarm</button>
+
+  <audio id="alarm-sound" src="https://audio-previews.elements.envatousercontent.com/files/181619625/preview.mp3" preload="auto" loop></audio>
+
+  <script src="alarm.js"></script>
+</body>
+</html>
